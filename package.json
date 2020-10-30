@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --ignore-watch node_modules --no-notify src/server.ts",
-    "postinstall": "tsc",
+    "postinstall": "tsc && mv -i -v public dist/ && rm -v -rf src",
     "start": "node dist/server.ts",
     "watch-node": "nodemon dist/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,5 +25,6 @@
     "tslint": "^6.1.3",
     "typescript": "^4.0.5"
   },
+  "engines": {"node": "12.18.4"},
   "keywords": []
 }
