@@ -8,6 +8,4 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const bot = DiscordBot.getInstance()
-
-bot.connect()
+DiscordBot.getInstance().connect()

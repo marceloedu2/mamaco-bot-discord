@@ -1,5 +1,5 @@
-export default async (client, message, args) => {
-  const m = await message.channel.send('ping?')
+module.exports = async (client, message, args) => {
+  const m = await message.channel.send('ping')
 
   m.edit(
     `🏓 **| Pong!**\nLatência do Server: **${
