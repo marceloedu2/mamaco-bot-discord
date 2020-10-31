@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import express, { request, response } from 'express'
+import express from 'express'
 import cors from 'cors'
 import { DiscordBot } from './client'
 
