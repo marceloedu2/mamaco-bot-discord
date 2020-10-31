@@ -12,7 +12,7 @@ app.get('/', (request, response) => {
   response.send('GG')
 })
 
-app.listen(3333, () => {
+app.listen(process.env.PORT || 3333, () => {
   console.log('Server started port:3333')
 })
 
