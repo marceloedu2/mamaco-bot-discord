@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm'
+
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('sextouImages')
-export default class SextouImages extends BaseEntity {
+export default class SextouImages {
   @PrimaryGeneratedColumn('increment')
   id: number
 
