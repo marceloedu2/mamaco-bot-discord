@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "set debug=* && ts-node-dev --respawn --ignore-watch node_modules --no-notify src/server.ts",
-    "start": "tsc && node dist/server.js",
+    "start": " tsc && set NODE_ENV=production && node dist/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

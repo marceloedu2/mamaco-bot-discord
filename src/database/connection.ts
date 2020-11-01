@@ -11,7 +11,7 @@ const config: ConnectionOptions = {
     migrationsDir: './src/database/migrations',
   },
 }
-
+console.log({ config })
 createConnection(config)
   .then(() => {
     console.log('Connected to database')
