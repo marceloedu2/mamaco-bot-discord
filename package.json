@@ -4,12 +4,12 @@
   "description": "commander bot for the safezone discord server",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "dev": "ts-node-dev --respawn --ignore-watch node_modules --no-notify src/server.ts",
     "postinstall": "tsc",
-    "start": "node dist/server.ts",
-    "watch-node": "nodemon dist/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "start": "node dist/server.js",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Marcelo Araujo",
   "license": "ISC",
