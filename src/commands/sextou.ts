@@ -52,13 +52,10 @@ module.exports = async (client, message, args) => {
       message.channel.send(`Imagem adicionada a lista de imagens. ${args[1]}`)
       break
     case 'remove':
-      message.channel.send('**remove.**')
+      message.channel.send('Funcionalidade em produção')
       break
     case 'list':
-      message.channel.send('**list.**')
-      break
-    case args.length === 0:
-      message.channel.send('teste')
+      message.channel.send('Funcionalidade em produção')
       break
   }
 }
