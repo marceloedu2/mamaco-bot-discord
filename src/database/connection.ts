@@ -1,6 +1,6 @@
 import { ConnectionOptions, createConnection } from 'typeorm'
 
-const rootDir = process.env.NODE_ENV === 'development' ? './src' : './dist'
+const rootDir = process.env.NODE_ENV === 'development' ? 'src' : 'dist'
 
 const config: ConnectionOptions = {
   type: 'sqlite',
