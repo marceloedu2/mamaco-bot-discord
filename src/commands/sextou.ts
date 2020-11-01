@@ -33,7 +33,7 @@ module.exports = async (client, message, args) => {
         .setTitle(`Sextou!!!`)
         .setImage(response[0].image)
 
-      message.channel.send(messageEmbed)
+      return message.channel.send(messageEmbed)
     }
 
     if (!getPermission2(message))
@@ -93,8 +93,9 @@ module.exports = async (client, message, args) => {
             .setTitle(`Id: ${item.id}`)
             .setImage(item.image)
 
-          message.channel.send(list)
+          return message.channel.send(list)
         })
+
         break
     }
   } catch (err) {
