@@ -63,8 +63,7 @@ export class DiscordBot {
       const command = args.shift().toLowerCase()
 
       try {
-        const commandFile = require(`../commands/${command}`)
-
+        const commandFile = require(`./commands/${command}`)
         commandFile(this.client, message, args)
       } catch (err) {
         console.error('Erro:' + err)
