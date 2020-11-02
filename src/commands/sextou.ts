@@ -25,7 +25,7 @@ module.exports = async (client, message, args) => {
 
       const messageEmbed = new Discord.MessageEmbed()
         .setColor('#FF5733')
-        .setTitle(`🍻**Sextou!!!**🍻`)
+        .setTitle(`**Sextou!!!** 🎇🎇🎆🎆`)
         .setImage(imageItem.image)
 
       return message.channel.send(messageEmbed)
