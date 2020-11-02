@@ -66,7 +66,7 @@ export class DiscordBot {
         const commandFile = require(`./commands/${command}`)
         commandFile(this.client, message, args)
       } catch (err) {
-        console.error('Erro:' + err)
+        console.error('Command erro:' + err)
       }
     })
   }

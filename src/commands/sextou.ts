@@ -38,6 +38,7 @@ module.exports = async (client, message, args) => {
 
     switch (args[0]) {
       case 'add':
+        message.delete()
         if (
           args[1].indexOf(
             'https://discord.com/' || 'https://cdn.discordapp.com/',
