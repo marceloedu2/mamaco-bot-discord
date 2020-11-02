@@ -13,25 +13,20 @@ module.exports = async (client, message, args) => {
 
   try {
     if (args.length === 0) {
-      const images = await sextouImageRepository.find({
-        order: {
-          id: 'DESC',
-        },
-        take: 1,
-      })
+      const images = await sextouImageRepository.find()
 
       if (images <= []) {
         message.channel.send('**Nenhum registro encontrado.**')
       }
 
-      const random = Math.floor(Math.random() * images[0].id + 1)
-      const response: ISextouImages[] = await sextouImageRepository.findByIds([
-        random,
-      ])
+      const random = Math.floor(Math.random() * (images.length - 1) + 1)
+
+      const imageItem = images[random]
+
       const messageEmbed = new Discord.MessageEmbed()
         .setColor('#FF5733')
         .setTitle(`Sextou!!!`)
-        .setImage(response[0].image)
+        .setImage(imageItem.image)
 
       return message.channel.send(messageEmbed)
     }
