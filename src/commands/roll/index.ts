@@ -6,18 +6,21 @@ const roll = async (client, message, args) => {
   const rolling = []
 
   if (!dices[0]) {
-    dices[0] = 1;
+    dices[0] = 1
   }
   if (!dices[1]) {
-    return message.channel.send(`
-    **Valor do dados deve ser informado!**
-Ex: *3d10*`)
+    const roll = new Discord.MessageEmbed()
+      .setColor('#990033')
+      .setTitle('Valor do dados deve ser informado!')
+      .setDescription('Ex: *3d10*')
+    return message.channel.send(roll)
   }
 
   if (dices[0] == 0 || dices[1] == 0) {
-    return message.channel.send(`
-    <@${message.author.id}>:
-🎲 **0** ┃ 0 ┃ *${args}*`)
+    const roll = new Discord.MessageEmbed()
+      .setColor('#990033')
+      .setDescription(`🎲 **0** ┃ 0 ┃  *${args}* - <@${message.author.id}>`)
+    return message.channel.send(roll)
   }
 
   for (let i = 0; i < dices[0]; i++) {
