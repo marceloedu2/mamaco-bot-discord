@@ -1,5 +1,6 @@
 import Discord from 'discord.js'
 import ytdl from 'ytdl-core'
+import getRandomColor from '../../../utils/getRandomColors'
 
 interface IServerQueue {
   textChannel: string
@@ -67,7 +68,7 @@ const execute = async (client, message, args) => {
     } else {
       serverQueue.songs.push(song)
       const music = new Discord.MessageEmbed()
-        .setColor('#FF33E0')
+        .setColor(getRandomColor())
         .setTitle(`Adicionado à fila:`)
         .setDescription(`<@${message.author.id}> - ${song.title}.`)
       return message.channel.send(music)
@@ -97,7 +98,7 @@ const play = (client, message, song) => {
     .on('error', error => console.error(error))
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 5)
   const music = new Discord.MessageEmbed()
-    .setColor('#FF33E0')
+    .setColor(getRandomColor())
     .setTitle(`Tocando Musica:`)
     .setDescription(`<@${message.author.id}> - ${song.title}.`)
   console.log({ client, message })

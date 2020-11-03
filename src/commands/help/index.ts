@@ -1,9 +1,9 @@
 import Discord from 'discord.js'
-import getFileNames from '../../utils/getFileNames'
+import getRandomColor from '../../utils/getRandomColors'
 
 const help = async (client, message, args) => {
   const msg = new Discord.MessageEmbed()
-    .setColor('#77DD77')
+    .setColor(getRandomColor())
     .setTitle('Comandos bots:')
     .setDescription('Lista de todos os comandos de acão:')
     .addFields(

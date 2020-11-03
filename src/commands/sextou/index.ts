@@ -2,6 +2,7 @@ import { getRepository } from 'typeorm'
 import SextouImages from '../../models/sextouImages'
 import Discord from 'discord.js'
 import { getPermission2 } from '../../utils/getPermission'
+import getRandomColor from '../../utils/getRandomColors'
 
 interface ISextouImages {
   id: number
@@ -10,7 +11,6 @@ interface ISextouImages {
 
 const sextou = async (client, message, args) => {
   const sextouImageRepository = getRepository(SextouImages)
-
   try {
     if (args.length === 0) {
       const images = await sextouImageRepository.find()
@@ -24,7 +24,7 @@ const sextou = async (client, message, args) => {
       const imageItem = images[random]
 
       const messageEmbed = new Discord.MessageEmbed()
-        .setColor('#FF5733')
+        .setColor(getRandomColor())
         .setTitle(`**Sextou!!!** 🎇🎇🎆🎆`)
         .setImage(imageItem.image)
 
@@ -57,7 +57,7 @@ const sextou = async (client, message, args) => {
         await sextouImageRepository.save(sextouImage)
 
         const messageEmbed = new Discord.MessageEmbed()
-          .setColor('#FF5733')
+          .setColor(getRandomColor())
           .setTitle(`🍻 *Imagem adicionada*`)
           .setImage(args[1])
 
@@ -85,7 +85,7 @@ const sextou = async (client, message, args) => {
         }
         listIds.map(item => {
           const list = new Discord.MessageEmbed()
-            .setColor('#FF5733')
+            .setColor(getRandomColor())
             .setTitle(`Id: ${item.id}`)
             .setImage(item.image)
 

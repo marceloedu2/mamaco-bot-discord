@@ -1,4 +1,5 @@
 import Discord from 'discord.js'
+import getRandomColor from '../../utils/getRandomColors'
 
 const avatar = async (client, message, args) => {
   let user =
@@ -9,7 +10,7 @@ const avatar = async (client, message, args) => {
   let avatar = user.avatarURL({ dynamic: true, format: 'png', size: 1024 })
 
   let embed = new Discord.MessageEmbed()
-    .setColor(`#4cd8b2`)
+    .setColor(getRandomColor())
     .setTitle(`Avatar de ${user.username}`)
     .setImage(avatar)
     .setFooter(
