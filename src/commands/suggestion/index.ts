@@ -1,6 +1,6 @@
 import Discord from 'discord.js'
 
-module.exports = async (client, message, args) => {
+const suggestion = async (client, message, args) => {
   message.delete()
   const content = args.join(' ')
 
@@ -35,3 +35,5 @@ module.exports = async (client, message, args) => {
     }
   }
 }
+
+module.exports = suggestion

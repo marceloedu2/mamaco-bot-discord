@@ -8,6 +8,7 @@ export class DiscordBot {
   private static instance: DiscordBot
 
   private client: Client = new Client()
+  private queue = new Map()
 
   private constructor() {
     this.initializeClient()
@@ -64,7 +65,7 @@ export class DiscordBot {
 
       try {
         const commandFile = require(`./commands/${command}`)
-        commandFile(this.client, message, args)
+        commandFile({ ...this.client, queue: this.queue }, message, args)
       } catch (err) {
         console.error('Command erro:' + err)
       }

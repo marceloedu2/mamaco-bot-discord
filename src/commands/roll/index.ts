@@ -1,4 +1,4 @@
-module.exports = async (client, message, args) => {
+const roll = async (client, message, args) => {
   const dices = args[0].toLowerCase().split('d')
 
   const rolling = []
@@ -31,3 +31,5 @@ Ex: *3d10*`)
   <@${message.author.id}>:
 🎲 **${soma}** ┃ ${rolling} ┃ *${args}*`)
 }
+
+module.exports = roll

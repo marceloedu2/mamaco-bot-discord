@@ -1,14 +1,14 @@
 import { getRepository } from 'typeorm'
-import SextouImages from '../models/sextouImages'
+import SextouImages from '../../models/sextouImages'
 import Discord from 'discord.js'
-import { getPermission2 } from '../utils/getPermission'
+import { getPermission2 } from '../../utils/getPermission'
 
 interface ISextouImages {
   id: number
   image: string
 }
 
-module.exports = async (client, message, args) => {
+const sextou = async (client, message, args) => {
   const sextouImageRepository = getRepository(SextouImages)
 
   try {
@@ -98,3 +98,5 @@ module.exports = async (client, message, args) => {
     console.log({ error: err })
   }
 }
+
+module.exports = sextou

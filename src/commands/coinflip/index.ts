@@ -1,4 +1,4 @@
-module.exports = async (client, message, args) => {
+const coinFlip = async (client, message, args) => {
   let array1 = ['cara', 'coroa']
 
   let rand = Math.floor(Math.random() * array1.length)
@@ -14,3 +14,5 @@ module.exports = async (client, message, args) => {
     message.channel.send('Deu **' + array1[rand] + '**, você perdeu dessa vez!')
   }
 }
+
+module.exports = coinFlip
