@@ -6,9 +6,7 @@ const roll = async (client, message, args) => {
   const rolling = []
 
   if (!dices[0]) {
-    return message.channel.send(`
-    **Quantidade de dados deve ser informado**
-    Ex: *3d10*`)
+    dices[0] = 1;
   }
   if (!dices[1]) {
     return message.channel.send(`
