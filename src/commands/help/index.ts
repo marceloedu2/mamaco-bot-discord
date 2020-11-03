@@ -3,7 +3,7 @@ import getRandomColor from '../../utils/getRandomColors'
 
 const help = async (client, message, args) => {
   const msg = new Discord.MessageEmbed()
-    .setColor(getRandomColor())
+    .setColor('#990033')
     .setTitle('Comandos bots:')
     .setDescription('Lista de todos os comandos de acão:')
     .addFields(
