@@ -54,7 +54,6 @@ const execute = async (client, message, args) => {
       queue.set(message.guild.id, queueConstruct)
 
       queueConstruct.songs.push(song)
-      message.delete()
 
       try {
         queueConstruct.connection = await voiceChannel.join()
