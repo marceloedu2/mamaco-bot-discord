@@ -4,10 +4,10 @@ const giphyKey = process.env.GIPHY_KEY
 
 const mamaco = async (client, message) => {
   const { data } = await giphyRandom(giphyKey, { tag: 'monkey' })
-  console.log(data)
   const gif = new Discord.MessageEmbed()
     .setColor('#990033')
     .setImage(data.images.original.url)
+    .setFooter(data.title)
   return message.channel.send(gif)
 }
 
