@@ -1,4 +1,4 @@
-import { Client, Message } from 'discord.js'
+import { Client, Message, MessageEmbed } from 'discord.js'
 
 const config = {
   prefix: '!',
@@ -67,6 +67,10 @@ export class DiscordBot {
         const commandFile = require(`./commands/${command}`)
         commandFile({ ...this.client, queue: this.queue }, message, args)
       } catch (err) {
+        const msgErr = new MessageEmbed()
+          .setColor('#FF0000')
+          .setDescription('404 - Command not found')
+        message.channel.send(msgErr)
         console.error('Command erro:' + err)
       }
     })

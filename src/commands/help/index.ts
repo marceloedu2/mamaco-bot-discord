@@ -19,7 +19,7 @@ const help = async (client, message, args) => {
       },
       {
         name: '!roll',
-        value: 'Comando destinado ao RPG, rolador de dados randômico.',
+        value: 'Comando destinado ao RPG, rolador de dados aleatório.',
       },
       { name: '!say', value: 'O bot repitirá o que foi informado.' },
       {
@@ -34,6 +34,14 @@ const help = async (client, message, args) => {
       {
         name: '!music',
         value: 'Comando para tocar musicas.',
+      },
+      {
+        name: '!mamaco',
+        value: 'Comando para retornar um GIF aleatório de mamaco.',
+      },
+      {
+        name: '!gif',
+        value: 'Comando para retornar um GIF aleatório do parâmetro informado.',
       },
     )
 
