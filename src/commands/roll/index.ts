@@ -1,3 +1,5 @@
+import Discord from 'discord.js'
+
 const roll = async (client, message, args) => {
   const dices = args[0].toLowerCase().split('d')
 
@@ -26,10 +28,13 @@ Ex: *3d10*`)
   const reducer = (accumulator, currentValue) => accumulator + currentValue
 
   const soma = rolling.reduce(reducer)
+  const roll = new Discord.MessageEmbed()
+    .setColor('#990033')
+    .setDescription(
+      `🎲  **${soma}**  ┃ ${rolling} ┃ *${args}* - <@${message.author.id}>`,
+    )
 
-  message.channel.send(`
-  <@${message.author.id}>:
-🎲 **${soma}** ┃ ${rolling} ┃ *${args}*`)
+  message.channel.send(roll)
 }
 
 module.exports = roll
