@@ -26,9 +26,10 @@
     "fs": "^0.0.1-security",
     "giphy-random": "^2.0.8",
     "heroku": "^7.47.0",
-    "sqlite3": "^5.0.0",
+    "pg": "^8.4.2",
     "standard": "^16.0.0",
-    "typeorm": "^0.2.28",
+    "typeorm": "^0.2.29",
+    "valid-url": "^1.0.9",
     "ytdl-core": "^4.0.2"
   },
   "devDependencies": {

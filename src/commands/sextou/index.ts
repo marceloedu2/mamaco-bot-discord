@@ -1,8 +1,10 @@
 import { getRepository } from 'typeorm'
 import SextouImages from '../../models/sextouImages'
-import Discord from 'discord.js'
+import Discord, { MessageEmbed } from 'discord.js'
+import { URL } from 'url'
 import { getPermission2 } from '../../utils/getPermission'
 import getRandomColor from '../../utils/getRandomColors'
+import { stringIsAValidUrl } from '../../utils/validatedLink'
 
 interface ISextouImages {
   id: number
@@ -39,15 +41,20 @@ const sextou = async (client, message, args) => {
     switch (args[0]) {
       case 'add':
         message.delete()
-        if (
-          args[1].indexOf(
-            'https://discord.com/' || 'https://cdn.discordapp.com/',
-          ) !== -1
-        ) {
-          return message.channel.send(
-            `O comando deve conter um link originario do Discord.`,
-            'Ex: !sextou add https: //discord.com/channels/576022672983457802',
-          )
+        let messageEmbed: string | MessageEmbed = ''
+
+        if (!stringIsAValidUrl(args[1]).then()) {
+          messageEmbed = 'Essa imagem não é um link valido!'
+        }
+
+        const imageExist = await sextouImageRepository.find({
+          where: {
+            image: args[1],
+          },
+        })
+
+        if (imageExist) {
+          messageEmbed = 'Essa imagem já existe em nosso banco de images!'
         }
 
         const sextouImage = sextouImageRepository.create({
@@ -56,7 +63,7 @@ const sextou = async (client, message, args) => {
 
         await sextouImageRepository.save(sextouImage)
 
-        const messageEmbed = new Discord.MessageEmbed()
+        messageEmbed = new Discord.MessageEmbed()
           .setColor(getRandomColor())
           .setTitle(`🍻 *Imagem adicionada*`)
           .setImage(args[1])
