@@ -1,10 +1,9 @@
 import { getRepository } from 'typeorm'
 import SextouImages from '../../models/sextouImages'
-import Discord, { MessageEmbed } from 'discord.js'
 
 import { getPermission2 } from '../../utils/getPermission'
-import getRandomColor from '../../utils/getRandomColors'
 import { stringIsAValidUrl } from '../../utils/validatedLink'
+import { sendMessage, sendMessageImage } from '../../components/sendMessage'
 
 interface ISextouImages {
   id: number
@@ -12,49 +11,58 @@ interface ISextouImages {
 }
 
 const sextou = async (client, message, args) => {
-  const sextouImageRepository = getRepository(SextouImages)
   try {
+    const sextouImageRepository = getRepository(SextouImages)
     if (args.length === 0) {
       const images = await sextouImageRepository.find()
-
-      if (images <= []) {
-        message.channel.send('**Nenhum registro encontrado.**')
+      if (!images) {
+        return sendMessage('**Nenhum registro encontrado!**', message)
       }
 
-      const random = Math.floor(Math.random() * (images.length - 1) + 1)
+      const random = Math.floor(Math.random() * images.length)
 
       const imageItem = images[random]
 
-      const messageEmbed = new Discord.MessageEmbed()
-        .setColor(getRandomColor())
-        .setTitle(`**Sextou!!!** 🎇🎇🎆🎆`)
-        .setImage(imageItem.image)
-
-      return message.channel.send(messageEmbed)
+      return sendMessageImage(
+        '**Sextou!!!** 🎇🎇🎆🎆',
+        imageItem.image,
+        message,
+      )
     }
+    console.log('entrou')
 
     if (!getPermission2(message))
-      return message.channel.send(
+      return sendMessage(
         `**Comando Exclusivo para adm ou moderador.** *Você não possui permissão para executar esse comando.*`,
+        message,
       )
 
     switch (args[0]) {
       case 'add':
         message.delete()
-        let messageEmbed: string | MessageEmbed = ''
 
-        if (!stringIsAValidUrl(args[1]).then()) {
-          messageEmbed = 'Essa imagem não é um link valido!'
+        const image: string = args[1]
+        if (!image) {
+          return sendMessage(
+            `*Deve ser informado um link de uma imagem valida!*`,
+            message,
+          )
+        }
+        if (!stringIsAValidUrl(image).then()) {
+          return sendMessage('*Imagem não é um link valido!*', message)
         }
 
         const imageExist = await sextouImageRepository.find({
           where: {
-            image: args[1],
+            image: image,
           },
         })
 
         if (imageExist) {
-          messageEmbed = 'Essa imagem já existe em nosso banco de images!'
+          return sendMessage(
+            `*Imagem já existe em nosso banco de fotos!*`,
+            message,
+          )
         }
 
         const sextouImage = sextouImageRepository.create({
@@ -63,46 +71,36 @@ const sextou = async (client, message, args) => {
 
         await sextouImageRepository.save(sextouImage)
 
-        messageEmbed = new Discord.MessageEmbed()
-          .setColor(getRandomColor())
-          .setTitle(`🍻 *Imagem adicionada*`)
-          .setImage(args[1])
-
-        message.channel.send(messageEmbed)
+        sendMessageImage('🍻 *Imagem adicionada!*', args[1], message)
         break
       case 'remove':
         const id = args[1].split(',')
 
         if (!id) {
-          return message.channel.send('**Id deve conter um numero!**')
+          return sendMessage('**Id deve conter um numero!**', message)
         }
         const registers = await sextouImageRepository.findByIds(id)
 
         if (registers <= []) {
-          return message.channel.send(`**Nenhum registro encontrado.**`)
+          return sendMessage(`**Nenhum registro encontrado!**`, message)
         }
         await sextouImageRepository.delete(id)
-        message.channel.send(`Id: ${id} deletado.`)
-
+        sendMessage(`Id: ${id} deletado.`, message)
         break
       case 'list':
         const listIds: ISextouImages[] = await sextouImageRepository.find()
         if (listIds <= []) {
-          return message.channel.send(`**Nenhum registro encontrado.**`)
+          return sendMessage(`**Nenhum registro encontrado!**`, message)
         }
         listIds.map(item => {
-          const list = new Discord.MessageEmbed()
-            .setColor(getRandomColor())
-            .setTitle(`Id: ${item.id}`)
-            .setImage(item.image)
-
-          return message.channel.send(list)
+          return sendMessageImage(`Id: ${item.id}`, item.image, message)
         })
 
         break
     }
   } catch (err) {
     console.log({ error: err })
+    return sendMessage('**Erro ao processar a mensagem.**', message)
   }
 }
 
