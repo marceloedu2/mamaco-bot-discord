@@ -1,3 +1,5 @@
+import { URL } from 'url'
+
 const stringIsAValidUrl = async url => {
   try {
     await new URL(url)

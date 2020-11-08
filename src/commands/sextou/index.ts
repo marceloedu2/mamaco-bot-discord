@@ -1,7 +1,7 @@
 import { getRepository } from 'typeorm'
 import SextouImages from '../../models/sextouImages'
 import Discord, { MessageEmbed } from 'discord.js'
-import { URL } from 'url'
+
 import { getPermission2 } from '../../utils/getPermission'
 import getRandomColor from '../../utils/getRandomColors'
 import { stringIsAValidUrl } from '../../utils/validatedLink'
