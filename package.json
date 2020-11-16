@@ -27,7 +27,7 @@
     "giphy-random": "^2.0.8",
     "heroku": "^7.47.0",
     "pg": "^8.4.2",
-    "standard": "^16.0.0",
+    "standard": "^16.0.2",
     "typeorm": "^0.2.29",
     "ytdl-core": "^4.0.5"
   },
