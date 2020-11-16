@@ -376,10 +376,10 @@
     strip-eof "^1.0.0"
     tunnel-ssh "^4.1.4"
 
-"@heroku-cli/plugin-pipelines@^7.43.0":
-  version "7.43.0"
-  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-pipelines/-/plugin-pipelines-7.43.0.tgz#7386a8e4dad2e93f19c902b1bc85aa8532a3a20e"
-  integrity sha512-r5lhEiLW+3fRLPXLSTurW8widQt/9zLGsBIRixWzMPbrhX5SsA0x5hN3jzQ55zTvW/bbdcQ1oLs7dCsNihMyaA==
+"@heroku-cli/plugin-pipelines@^7.47.2":
+  version "7.47.2"
+  resolved "https://registry.yarnpkg.com/@heroku-cli/plugin-pipelines/-/plugin-pipelines-7.47.2.tgz#b2007d1bd31c96f0a07964edf3b96991fdaa9649"
+  integrity sha512-GGBh4ccKJ1MyPQAPW7/qbdSOCgCMEkm3NH/tKwDV4SQtTJwWS2yLictXDGad+9l4TKkhXP9XZgIE7usOMHCkpw==
   dependencies:
     "@heroku-cli/color" "^1.1.14"
     "@heroku-cli/command" "^8.4.0"
@@ -2871,10 +2871,10 @@ heroku-exec-util@0.7.5:
     temp "0.8.3"
     uuid "3.2.1"
 
-heroku@^7.47.0:
-  version "7.47.0"
-  resolved "https://registry.yarnpkg.com/heroku/-/heroku-7.47.0.tgz#79847ddc10cd0906b3cc28ef21fc089f5c5699b6"
-  integrity sha512-+ch5PH3NhOeK3npGQcB/BOMc4meEnFW1sKM/pJNCcXCLjWQ3kMfRVqKjesqW7nnDkTKazQMmFtIXqu9/hbGKkg==
+heroku@^7.47.2:
+  version "7.47.2"
+  resolved "https://registry.yarnpkg.com/heroku/-/heroku-7.47.2.tgz#d222aee9764fa822134cb095141d3e26513842a4"
+  integrity sha512-yk6uYJrTndWIULeSZttHC2rCMPi372S5KHqzX0aMPkGPL3kHAULrnxsugHPNn0lqiDI89tegvNwzfBTOtXhCDw==
   dependencies:
     "@heroku-cli/color" "1.1.14"
     "@heroku-cli/command" "^8.4.0"
@@ -2895,7 +2895,7 @@ heroku@^7.47.0:
     "@heroku-cli/plugin-oauth-v5" "^7.42.12"
     "@heroku-cli/plugin-orgs-v5" "^7.43.0"
     "@heroku-cli/plugin-pg-v5" "^7.43.3"
-    "@heroku-cli/plugin-pipelines" "^7.43.0"
+    "@heroku-cli/plugin-pipelines" "^7.47.2"
     "@heroku-cli/plugin-ps" "^7.43.0"
     "@heroku-cli/plugin-ps-exec" "2.3.8"
     "@heroku-cli/plugin-redis-v5" "^7.45.0"
