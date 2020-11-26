@@ -1,4 +1,4 @@
-module.exports = async (client, message, args) => {
+const ping = async (client, message, args) => {
   const m = await message.channel.send('ping')
 
   m.edit(
@@ -7,3 +7,5 @@ module.exports = async (client, message, args) => {
     }ms.**\nLatência da API: **${Math.round(client.ws.ping)}ms**`,
   )
 }
+
+module.exports = ping

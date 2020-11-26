@@ -1,4 +1,4 @@
-import { Client, Message } from 'discord.js'
+import { Client, Message, MessageEmbed } from 'discord.js'
 
 const config = {
   prefix: '!',
@@ -8,6 +8,7 @@ export class DiscordBot {
   private static instance: DiscordBot
 
   private client: Client = new Client()
+  private queue = new Map()
 
   private constructor() {
     this.initializeClient()
@@ -64,9 +65,17 @@ export class DiscordBot {
 
       try {
         const commandFile = require(`./commands/${command}`)
+<<<<<<< HEAD:src/client.ts
         commandFile(this.client, message, args)
+=======
+        commandFile({ ...this.client, queue: this.queue }, message, args)
+>>>>>>> 3ccd9f8eccbe8deea3c64a47efd413987f461c13:src/client/index.ts
       } catch (err) {
-        console.error('Erro:' + err)
+        const msgErr = new MessageEmbed()
+          .setColor('#FF0000')
+          .setDescription('404 - Command not found')
+        message.channel.send(msgErr)
+        console.error('Command erro:' + err)
       }
     })
   }
