@@ -2,11 +2,11 @@
   "name": "dom-corleone-bot-discord",
   "version": "1.0.0",
   "description": "commander bot for the safezone discord server",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --ignore-watch node_modules --no-notify src/server.ts",
     "postinstall": "tsc",
-    "start": "node dist/server.ts",
+    "start": "set NODE_ENV=production && node dist/server.js",
     "watch-node": "nodemon dist/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "giphy-random": "^2.0.8",
     "heroku": "^7.47.0",
+    "nodemon": "^2.0.6",
     "pg": "^8.5.1",
     "standard": "^16.0.0",
     "typeorm": "^0.2.28",
