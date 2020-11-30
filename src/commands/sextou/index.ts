@@ -13,6 +13,7 @@ interface ISextouImages {
 const sextou = async (client, message, args) => {
   try {
     const sextouImageRepository = getRepository(SextouImages)
+
     if (args.length === 0) {
       const images = await sextouImageRepository.find()
       if (!images) {
@@ -29,7 +30,6 @@ const sextou = async (client, message, args) => {
         message,
       )
     }
-    console.log('entrou')
 
     if (!getPermission2(message))
       return sendMessage(

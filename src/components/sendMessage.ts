@@ -16,5 +16,4 @@ export const sendMessageImage = (text: string, image: string, message: any) => {
     .setImage(image)
 
   return message.channel.send(messageEmbed)
-  return message.channel.send(messageEmbed)
 }

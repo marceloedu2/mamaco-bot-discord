@@ -65,11 +65,7 @@ export class DiscordBot {
 
       try {
         const commandFile = require(`./commands/${command}`)
-<<<<<<< HEAD:src/client.ts
-        commandFile(this.client, message, args)
-=======
         commandFile({ ...this.client, queue: this.queue }, message, args)
->>>>>>> 3ccd9f8eccbe8deea3c64a47efd413987f461c13:src/client/index.ts
       } catch (err) {
         const msgErr = new MessageEmbed()
           .setColor('#FF0000')
