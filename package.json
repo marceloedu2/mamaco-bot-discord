@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --ignore-watch node_modules --no-notify src/server.ts",
     "start": "set NODE_ENV=production && node dist/server.js",
-    "watch-node": "nodemon dist/server.ts",
     "postinstall": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "husky": {
