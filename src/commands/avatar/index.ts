@@ -1,6 +1,7 @@
-const Discord = require('discord.js')
+import Discord from 'discord.js'
+import getRandomColor from '../../utils/getRandomColors'
 
-module.exports = async (client, message, args) => {
+const avatar = async (client, message, args) => {
   let user =
     message.mentions.users.first() ||
     client.users.cache.get(args[0]) ||
@@ -9,7 +10,7 @@ module.exports = async (client, message, args) => {
   let avatar = user.avatarURL({ dynamic: true, format: 'png', size: 1024 })
 
   let embed = new Discord.MessageEmbed()
-    .setColor(`#4cd8b2`)
+    .setColor(getRandomColor())
     .setTitle(`Avatar de ${user.username}`)
     .setImage(avatar)
     .setFooter(
@@ -18,3 +19,5 @@ module.exports = async (client, message, args) => {
     )
   await message.channel.send(embed)
 }
+
+module.exports = avatar
