@@ -1,10 +1,12 @@
 import { Client, Message, MessageEmbed } from 'discord.js'
+import * as fs from 'fs'
+import commands from './config/commands'
 
 const config = {
   prefix: '!',
 }
 
-export class DiscordBot {
+class DiscordBot {
   private static instance: DiscordBot
 
   private client: Client = new Client()
@@ -34,6 +36,7 @@ export class DiscordBot {
     if (!this.client) return
 
     this.setReadyHandler()
+    //this.setEventHandler()
     this.setMessageHandler()
   }
 
@@ -42,7 +45,16 @@ export class DiscordBot {
       console.log(`Logged in as ${this.client.user.tag}!`)
     })
   }
-
+  private setEventHandler(): void {
+    fs.readdir('./src/events/', (err, files) => {
+      if (err) return console.error(err)
+      files.forEach(async file => {
+        const event = require(`./events/${file}`)
+        let eventName = file.split('.')[0]
+        this.client.on(eventName, event.bind(null, this.client))
+      })
+    })
+  }
   private setMessageHandler(): void {
     this.client.on('message', async (message: Message) => {
       if (message.author.bot) return
@@ -64,15 +76,24 @@ export class DiscordBot {
       const command = args.shift().toLowerCase()
 
       try {
-        const commandFile = require(`./commands/${command}`)
+        console.log({ commands })
+        const commandObj = commands.find(path => path.name === command)
+        const commandPath = String(
+          `./commands/${commandObj.group}/${commandObj.name}`,
+        )
+        console.log({ commandPath })
+        const commandFile = require(commandPath)
+        console.log({ commandFile })
         commandFile({ ...this.client, queue: this.queue }, message, args)
       } catch (err) {
         const msgErr = new MessageEmbed()
           .setColor('#FF0000')
           .setDescription('404 - Command not found')
-        message.channel.send(msgErr)
+        message.channel.send(msgErr).catch()
         console.error('Command erro:' + err)
       }
     })
   }
 }
+
+export default DiscordBot

@@ -1,4 +1,4 @@
-const coinFlip = async (client, message, args) => {
+const coinflip = async (client, message, args) => {
   let array1 = ['cara', 'coroa']
 
   let rand = Math.floor(Math.random() * array1.length)
@@ -15,4 +15,4 @@ const coinFlip = async (client, message, args) => {
   }
 }
 
-module.exports = coinFlip
+module.exports = coinflip

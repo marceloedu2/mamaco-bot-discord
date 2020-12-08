@@ -2,8 +2,8 @@ import 'dotenv/config'
 import express from 'express'
 
 import cors from 'cors'
-import { DiscordBot } from './client'
-import './database/connection'
+import DiscordBot from './client'
+//import './database/connection'
 
 const app = express()
 
@@ -17,5 +17,4 @@ app.get('/', (request, response) => {
 app.listen(process.env.PORT || 3333, () => {
   console.log('Server started port:3333')
 })
-
 DiscordBot.getInstance().connect()

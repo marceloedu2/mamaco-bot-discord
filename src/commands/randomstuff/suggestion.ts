@@ -13,7 +13,7 @@ const suggestion = async (client, message, args) => {
       `${message.author.username}, forneça uma sugestão de no máximo 1000 caracteres.`,
     )
   } else {
-    let canal = message.guild.channels.cache.find(
+    const canal = message.guild.channels.cache.find(
       ch => ch.id === '772689177731923978',
     )
     const msg = await canal.send(
