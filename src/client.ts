@@ -74,16 +74,12 @@ class DiscordBot {
         .slice(config.prefix.length)
         .split(/ +/g)
       const command = args.shift().toLowerCase()
-
       try {
-        console.log({ commands })
-        const commandObj = commands.find(path => path.name === command)
+        const commandObj = await commands.find(path => path.name === command)
         const commandPath = String(
           `./commands/${commandObj.group}/${commandObj.name}`,
         )
-        console.log({ commandPath })
         const commandFile = require(commandPath)
-        console.log({ commandFile })
         commandFile({ ...this.client, queue: this.queue }, message, args)
       } catch (err) {
         const msgErr = new MessageEmbed()

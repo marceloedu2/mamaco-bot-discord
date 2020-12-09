@@ -50,11 +50,11 @@ export default [
     example: '!sextou, !sextou add <url>, !sextou list, !sextou remove <:id>',
   },
   {
-    name: 'color',
+    name: 'red',
     group: 'randomstuff',
     desc: 'Gera uma cor hexadecimal aleatória com visualização',
-    usage: '!color',
-    example: '!color',
+    usage: '!red',
+    example: '!red',
   },
   // GAMES
   {
