@@ -1,7 +1,7 @@
 import Discord from 'discord.js'
 import getRandomColors from '../../utils/getRandomColors'
 
-const dogs = (client, message, args) => {
+const dog = (client, message, args) => {
   var dogs = [
     'https://cdn.shopify.com/s/files/1/1324/6367/collections/Why_all_dogs_love_us_close_up_large.jpg?v=1487160259',
     'https://static01.nyt.com/images/2018/02/11/realestate/11dogs-topbreeds-Chihuahua/11dogs-topbreeds-Chihuahua-master495.jpg',
@@ -21,9 +21,9 @@ const dogs = (client, message, args) => {
 
   const embed = new Discord.MessageEmbed()
     .setColor(getRandomColors())
-    .setDescription(`Oh look I found a cuty dog :dog:`)
+    .setDescription(`Olhe, eu encontrei um cão fofo :dog:`)
     .setImage(dogs[Math.floor(Math.random() * dogs.length)])
 
   return message.channel.send(embed)
 }
-module.exports = dogs
+module.exports = dog

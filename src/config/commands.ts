@@ -3,21 +3,28 @@ export default [
   {
     name: 'ping',
     group: 'randomstuff',
-    desc: 'Ping the bot',
+    desc: 'Faça ping no bot',
     usage: '!ping',
     example: '!ping',
   },
   {
-    name: 'dogs',
+    name: 'dog',
     group: 'randomstuff',
-    desc: 'Find some cute dog pictures',
-    usage: '!dogs',
-    example: '!dogs',
+    desc: 'Encontre algumas fotos fofas de cachorros',
+    usage: '!dog',
+    example: '!dog',
+  },
+  {
+    name: 'cat',
+    group: 'randomstuff',
+    desc: 'Exibe uma imagem aleatoria de um gato diferente.',
+    usage: '!cat',
+    example: '!cat',
   },
   {
     name: 'mamaco',
     group: 'randomstuff',
-    desc: 'Find some cute mamaco pictures',
+    desc: 'Encontre algumas fotos bonitas do mamaco',
     usage: '!mamaco',
     example: '!mamaco',
   },
@@ -42,6 +49,13 @@ export default [
     usage: '!sextou',
     example: '!sextou, !sextou add <url>, !sextou list, !sextou remove <:id>',
   },
+  {
+    name: 'color',
+    group: 'randomstuff',
+    desc: 'Gera uma cor hexadecimal aleatória com visualização',
+    usage: '!color',
+    example: '!color',
+  },
   // GAMES
   {
     name: 'roll',
@@ -53,7 +67,7 @@ export default [
   {
     name: 'coinflip',
     group: 'games',
-    desc: 'Flip a coin',
+    desc: 'Jogar uma moeda, Cara ou coroa',
     usage: '!coinflip',
     example: '!coinflip <cara ou coroa>',
   },
