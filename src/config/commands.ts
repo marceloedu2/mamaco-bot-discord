@@ -71,4 +71,14 @@ export default [
     usage: '!coinflip',
     example: '!coinflip <cara ou coroa>',
   },
+  // INFO
+
+  {
+    name: 'info',
+    group: 'info',
+    desc:
+      'Mostra a lista de comandos se apenas escrever !help ou se escrever !help <comando> mostra a informação do comando atual.',
+    usage: '!info or !info <comando>',
+    example: '!info or !info coinflip',
+  },
 ]
