@@ -1,9 +1,11 @@
-import Discord from 'discord.js'
-import getRandomColor from '../../utils/getRandomColors'
+import Discord from 'discord.js';
+
+import getRandomColor from '../../utils/getRandomColors';
 
 const roll = async (client, message, args) => {
-  const dices = args[0].toLowerCase().split('d')
-
+  const complement = args[0].split(",")
+  const dices = complement[0].toLowerCase().split('d')
+  let calc = 0
   const rolling = []
 
   if (!dices[0]) {
@@ -16,6 +18,11 @@ const roll = async (client, message, args) => {
       .setDescription('Ex: *3d10*')
     return message.channel.send(roll)
   }
+
+  if (complement[1]) {
+    calc = eval(complement[1])
+  }
+
 
   if (dices[0] == 0 || dices[1] == 0) {
     const roll = new Discord.MessageEmbed()
@@ -33,7 +40,7 @@ const roll = async (client, message, args) => {
   const roll = new Discord.MessageEmbed()
     .setColor(getRandomColor())
     .setDescription(
-      `🎲  **${soma}**  ┃ ${rolling} ┃ *${args}* - <@${message.author.id}>`,
+      `🎲  **${soma+calc}**  ┃ ${calc > 0 ? `[ ${rolling} ] ${complement[1]}`: rolling } ┃ *${args}* - <@${message.author.id}>`,
     )
 
   message.channel.send(roll)
