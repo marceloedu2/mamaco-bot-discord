@@ -21,7 +21,7 @@
   "author": "Marcelo Araujo",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.4.0",
+    "@discordjs/opus": "^0.5.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "discord.js": "^12.5.1",
