@@ -1,4 +1,5 @@
 {
+  "engine": {"node": "12.18.4"},
   "name": "dom-corleone-bot-discord",
   "version": "1.0.0",
   "description": "commander bot for the safezone discord server",
