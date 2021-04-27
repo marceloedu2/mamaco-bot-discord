@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --respawn --ignore-watch node_modules --no-notify src/server.ts",
-    "start": "set NODE_ENV=production && yarn cache clean --force && node dist/server.js",
-    "postinstall": "yarn build",
+    "start": "set NODE_ENV=production && npm cache clean --force && node dist/server.js",
+    "postinstall": "npm run build",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "husky": {
