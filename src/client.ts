@@ -1,5 +1,6 @@
 import { Client, Message, MessageEmbed } from 'discord.js'
 import * as fs from 'fs'
+
 import commands from './config/commands'
 
 const config = {
@@ -36,7 +37,6 @@ class DiscordBot {
     if (!this.client) return
 
     this.setReadyHandler()
-    //this.setEventHandler()
     this.setMessageHandler()
   }
 
