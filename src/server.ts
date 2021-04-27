@@ -17,7 +17,7 @@ app.get('/', (request, response) => {
 
 
 app.listen(process.env.PORT || 3333, () => {
-  console.log('Server started port:3333')
+  console.log(`Server started port:${process.env.PORT || 3333}`)
 })
 
 DiscordBot.getInstance().connect()
