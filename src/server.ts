@@ -1,7 +1,7 @@
 import 'dotenv/config'
 
 import cors from 'cors'
-import express, { request } from 'express'
+import express from 'express'
 
 import DiscordBot from './client'
 
@@ -20,12 +20,3 @@ app.listen(process.env.PORT || 3333, () => {
 })
 
 DiscordBot.getInstance().connect()
-
-console.log('Successfully conected');
-
-let reqTimer = setTimeout(function wakeUp() {
-   request("https://mamaco-bot-app.herokuapp.com/", () => {
-      console.log("WAKE UP DYNO");
-   });
-   return reqTimer = setTimeout(wakeUp, 1200000);
-}, 1200000);
