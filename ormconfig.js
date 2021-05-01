@@ -5,6 +5,8 @@ module.exports = {
   url: process.env.DATABASE_URL,
   migrations: [`./${rootDir}/database/migrations/*.{js,ts}`],
   entities: [`./${rootDir}/models/*.{js,ts}`],
+  emitDecoratorMetadata: true,
+  experimentalDecorators: true,
   cli: {
     migrationsDir: './src/database/migrations',
   },

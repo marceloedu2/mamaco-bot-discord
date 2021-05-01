@@ -62,7 +62,7 @@ export default [
     group: 'games',
     desc: 'Rolador de dados aleatório.',
     usage: '!roll',
-    example: '!roll 1d10',
+    example: '!roll 1d10 ou !roll 1d10, +5',
   },
   {
     name: 'coinflip',

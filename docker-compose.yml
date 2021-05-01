@@ -1,13 +1,15 @@
 version: '3.8'
 services:
 
-  mamaco-database:
-    container_name: postgres
+  db:
+    container_name: db-pg-mamaco
     image: postgres:latest
     ports:
     - "5432:5432"
     volumes:
     - /data/postgres:/data/postgres
-    env_file:
-    - .env
-
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mamaco123
+      POSTGRES_USER: database
+      POSTGRES_DB: mamaco_db

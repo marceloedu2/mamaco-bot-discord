@@ -27,7 +27,7 @@ class DiscordBot {
   connect(): void {
     this.client
       .login(process.env.TOKEN)
-      .then(_ => console.log('Connected to Discord'))
+      .then(_ => console.log('Discord Connected'))
       .catch(error =>
         console.error(`Could not connect. Error: ${error.message}`),
       )
@@ -42,7 +42,7 @@ class DiscordBot {
 
   private setReadyHandler(): void {
     this.client.on('ready', () => {
-      console.log(`Logged in as ${this.client.user.tag}!`)
+      console.log(`${this.client.user.tag} Logged`)
     })
   }
   private setEventHandler(): void {
@@ -74,6 +74,7 @@ class DiscordBot {
         .slice(config.prefix.length)
         .split(/ +/g)
       const command = args.shift().toLowerCase()
+
       try {
         const commandObj = await commands.find(path => path.name === command)
         const commandPath = String(
