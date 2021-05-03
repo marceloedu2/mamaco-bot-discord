@@ -3,8 +3,10 @@ import Discord from 'discord.js'
 import getRandomColor from '../../utils/getRandomColors'
 
 const roll = async (client, message, args) => {
-  const complement = args.join("").split(",")
-  const dices = complement[0].toLowerCase().split('d')
+
+  const complement = args[1] ? args[1] : args[0].replace(new RegExp('[0-9]*[D|d][0-9]*', 'g'), '')
+  const dices = args[0].replace(complement, "").toLowerCase().split('d')
+
   let calc = 0
   const rolling = []
 
@@ -16,14 +18,14 @@ const roll = async (client, message, args) => {
     const roll = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Valor do dados deve ser informado!')
-      .setDescription('Ex: **3d10** ou **2d10, +5+6-2** para concatenar valor.')
+      .setDescription('Ex: **3d10** ou **2d10+5+6-2** para concatenar valor.')
     return message.channel.send(roll)
   }
 
-  if (complement[1]) {
-    calc = eval(complement[1])
+  if (complement) {
+    calc = eval(complement)
     if (!calc) {
-      calc = Number(complement[1])
+      calc = Number(complement)
     }
   }
 
@@ -44,14 +46,14 @@ const roll = async (client, message, args) => {
     const roll = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Valor inválido, corrija o comando!')
-      .setDescription(`Ex: **3d10** ou **2d10, +5+6-2** para concatenar valor.`)
+      .setDescription(`Ex: **3d10** ou **2d10+5+6-2** para concatenar valor.`)
     return message.channel.send(roll)
   }
 
   const roll = new Discord.MessageEmbed()
     .setColor(getRandomColor())
     .setDescription(
-      `🎲  **${soma+calc}**  ┃ ${rolling} ┃${calc > 0 ? `+${calc} ┃ `: calc < 0 ? `${calc} ┃ `:''} *${complement}* - <@${message.author.id}>`,
+      `🎲  **${soma+calc}**  ┃ ${rolling} ┃${calc > 0 ? `+${calc} ┃ `: calc < 0 ? `${calc} ┃ `:''} *${args[1] ? args[0]+args[1] : args[0]}* - <@${message.author.id}>`,
     )
 
   message.channel.send(roll)
