@@ -45,20 +45,22 @@ class DiscordBot {
       console.log(`${this.client.user.tag} Logged`)
     })
   }
+
   private setEventHandler(): void {
     fs.readdir('./src/events/', (err, files) => {
       if (err) return console.error(err)
       files.forEach(async file => {
         const event = require(`./events/${file}`)
-        let eventName = file.split('.')[0]
+        const eventName = file.split('.')[0]
         this.client.on(eventName, event.bind(null, this.client))
       })
     })
   }
+
   private setMessageHandler(): void {
     this.client.on('message', async (message: Message) => {
       if (message.author.bot) return
-      if (message.channel.type == 'dm') return
+      if (message.channel.type === 'dm') return
       if (
         !message.content.toLowerCase().startsWith(config.prefix.toLowerCase())
       )

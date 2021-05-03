@@ -1,5 +1,7 @@
 import Discord from 'discord.js'
+
 import getRandomColor from '../../utils/getRandomColors'
+
 const giphyRandom = require('giphy-random')
 const giphyKey = process.env.GIPHY_KEY
 

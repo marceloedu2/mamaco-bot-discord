@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
-//import './database/connection'
+// import './database/connection'
 import cors from 'cors'
 import express from 'express'
 
@@ -14,7 +14,6 @@ app.use(express.json())
 app.get('/', (request, response) => {
   response.send('BOT MAMACO EXCLUSIVE TO DISCORD SAFE ZONE')
 })
-
 
 app.listen(process.env.PORT || 3333, () => {
   console.log(`Server started port:${process.env.PORT || 3333}`)

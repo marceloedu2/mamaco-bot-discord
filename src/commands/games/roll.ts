@@ -3,9 +3,11 @@ import Discord from 'discord.js'
 import getRandomColor from '../../utils/getRandomColors'
 
 const roll = async (client, message, args) => {
-
-  const complement = args[1] ? args[1] : args[0].replace(new RegExp('[0-9]*[D|d][0-9]*', 'g'), '')
-  const dices = args[0].replace(complement, "").toLowerCase().split('d')
+  const complement = args[1]
+    ? args[1]
+    : args[0].replace(new RegExp('[0-9]*[D|d][0-9]*', 'g'), '')
+  const dices = args[0].replace(complement, '').toLowerCase().split('d')
+  console.log(complement)
 
   let calc = 0
   const rolling = []
@@ -29,7 +31,7 @@ const roll = async (client, message, args) => {
     }
   }
 
-  if (dices[0] == 0 || dices[1] == 0) {
+  if (dices[0] === 0 || dices[1] === 0) {
     const roll = new Discord.MessageEmbed()
       .setColor(getRandomColor())
       .setDescription(`🎲 **0** ┃ 0 ┃  *${args}* - <@${message.author.id}>`)
@@ -42,7 +44,7 @@ const roll = async (client, message, args) => {
   const reducer = (accumulator, currentValue) => accumulator + currentValue
 
   const soma = rolling.reduce(reducer)
-  if (isNaN(soma+calc)) {
+  if (isNaN(soma + calc)) {
     const roll = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Valor inválido, corrija o comando!')
@@ -53,7 +55,9 @@ const roll = async (client, message, args) => {
   const roll = new Discord.MessageEmbed()
     .setColor(getRandomColor())
     .setDescription(
-      `🎲  **${soma+calc}**  ┃ ${rolling} ┃${calc > 0 ? `+${calc} ┃ `: calc < 0 ? `${calc} ┃ `:''} *${args[1] ? args[0]+args[1] : args[0]}* - <@${message.author.id}>`,
+      `🎲 **${soma + calc}**  ┃ ${rolling} ┃${
+        calc > 0 ? `+${calc} ┃ ` : calc < 0 ? `${calc} ┃ ` : ''
+      } *${args[1] ? args[0] + args[1] : args[0]}* - <@${message.author.id}>`,
     )
 
   message.channel.send(roll)

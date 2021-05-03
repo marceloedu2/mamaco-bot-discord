@@ -1,4 +1,5 @@
 import Discord from 'discord.js'
+
 import getRandomColor from '../utils/getRandomColors'
 
 export const sendMessage = (text: string, message: any) => {
