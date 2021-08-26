@@ -7,7 +7,6 @@ const roll = async (client, message, args) => {
     ? args[1]
     : args[0].replace(new RegExp('[0-9]*[D|d][0-9]*', 'g'), '')
   const dices = args[0].replace(complement, '').toLowerCase().split('d')
-  console.log(complement)
 
   let calc = 0
   const rolling = []
