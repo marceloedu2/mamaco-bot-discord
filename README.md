@@ -19,8 +19,9 @@ yarn install
 Clone repository and install package dependencies.
 ```sh
 git clone https://github.com/marceloedu2/mamaco-bot-discord.git
-cd discord-bot
+cd mamaco-bot-discord
 yarn
+yarn dev
 ```
 Create new JSON file for bot config with the following contents in the directory specified below:
 
