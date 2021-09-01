@@ -1,14 +1,3 @@
-## Setting Up Mamaco Discord
-Create server in Discord.
-
-Create text channel for logs.
-
-Create roles `Admins` and `Moderators`.
-
-Invite Bot to your Server (see **Creating a Bot User** below).
-
-Make bot a Moderator.
-
 ## Install & Dependencies
 Install Node.js and Yarn.
 
@@ -42,6 +31,19 @@ Start the project.
 ```
 yarn dev
 ```
+
+---
+
+## Setting Up Mamaco Discord
+Create server in Discord.
+
+Create text channel for logs.
+
+Create roles `Admins` and `Moderators`.
+
+Invite Bot to your Server (see **Creating a Bot User** below).
+
+Make bot a Moderator.
 
 ---
 
