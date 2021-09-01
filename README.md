@@ -43,6 +43,8 @@ Start the project.
 yarn dev
 ```
 
+---
+
 To get `logChannel`, type `\#YOUR_CHANNEL_NAME` in your Discord server chat.
 
 Copy string of numbers **after** `#` into `"logChannel": ""`
