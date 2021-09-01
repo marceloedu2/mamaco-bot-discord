@@ -12,18 +12,13 @@ Make bot a Moderator.
 ## Install & Dependencies
 Install Node.js and Yarn.
 
-Install forever (task scheduler).
-```sh
-yarn install
-```
 Clone repository and install package dependencies.
-```sh
+```
 git clone https://github.com/marceloedu2/mamaco-bot-discord.git
 cd mamaco-bot-discord
 yarn
-yarn dev
 ```
-Create new JSON file for bot config with the following contents in the directory specified below:
+Create new ENV file for bot config with the following contents in the directory specified below:
 
 **For Development:** `.env`
 
@@ -41,6 +36,11 @@ DATABASE_URL=postgres://database:mamaco123@localhost:5432/mamaco_db
 POSTGRES_USER=database
 POSTGRES_PASSWORD=mamaco123
 POSTGRES_DB=mamaco_db 
+```
+
+Start the project.
+```
+yarn dev
 ```
 
 To get `logChannel`, type `\#YOUR_CHANNEL_NAME` in your Discord server chat.
