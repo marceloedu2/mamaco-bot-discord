@@ -147,7 +147,7 @@ const music = async (client, message, args) => {
   } else if ((args[0] === 'play' || args[0] === 'p') && args[1]) {
     execute(message, serverQueue)
     return
-  } else if (args[0] === 'skip') {
+  } else if (args[0] === 'next' || args[0] === 'n') {
     skip(message, serverQueue)
     return
   } else if (args[0] === 'stop') {
