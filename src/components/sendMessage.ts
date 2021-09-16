@@ -7,7 +7,11 @@ export const sendMessage = (text: string, message: any) => {
     .setColor(getRandomColor())
     .setTitle(text)
 
-  return message.channel.send(messageEmbed)
+  if (message) {
+    return message.channel.send(messageEmbed)
+  } else {
+    return messageEmbed
+  }
 }
 
 export const sendMessageImage = (text: string, image: string, message: any) => {

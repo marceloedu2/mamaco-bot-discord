@@ -26,13 +26,16 @@
   "author": "Marcelo Araujo",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.5.0",
+    "@discordjs/opus": "^0.6.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "discord.js": "^12.5.1",
     "dotenv": "^9.0.2",
     "enmap": "^5.8.2",
     "express": "^4.17.1",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^4.4.0",
+    "fluent-ffmpeg": "^2.1.2",
     "giphy-random": "^2.0.8",
     "heroku": "^7.47.3",
     "install": "^0.13.0",
@@ -41,7 +44,7 @@
     "postgres": "^1.0.2",
     "standard": "^16.0.0",
     "typeorm": "^0.2.32",
-    "ytdl-core": "^4.1.1"
+    "ytdl-core": "^4.9.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",

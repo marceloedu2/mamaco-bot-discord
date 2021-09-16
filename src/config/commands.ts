@@ -71,13 +71,20 @@ export default [
     usage: '!coinflip',
     example: '!coinflip <cara ou coroa>',
   },
+  // MUSIC
+  {
+    name: 'music',
+    group: '',
+    desc: 'Comando para manipulação de musicas no canal.',
+    usage:
+      '!music play **[Link]** or !music skip or !music queue or !music stop',
+    example: '!music play **[Link]**',
+  },
   // INFO
-
   {
     name: 'info',
     group: 'info',
-    desc:
-      'Mostra a lista de comandos se apenas escrever !help ou se escrever !help <comando> mostra a informação do comando atual.',
+    desc: 'Mostra a lista de comandos se apenas escrever !help ou se escrever !help <comando> mostra a informação do comando atual.',
     usage: '!info or !info <comando>',
     example: '!info or !info coinflip',
   },

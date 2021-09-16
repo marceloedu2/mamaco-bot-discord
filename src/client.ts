@@ -87,7 +87,7 @@ class DiscordBot {
       } catch (err) {
         const msgErr = new MessageEmbed()
           .setColor('#FF0000')
-          .setDescription('404 - Command not found')
+          .setDescription('❌ **404 - Command not found**')
         message.channel.send(msgErr).catch()
         console.error('Command erro:' + err)
       }
