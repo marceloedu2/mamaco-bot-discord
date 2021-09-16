@@ -1,8 +1,10 @@
 import Discord from 'discord.js'
+import yts from 'yt-search'
 import ytdl from 'ytdl-core'
 
 import getRandomColor from '../../utils/getRandomColors'
 import listMusics from './listMusics'
+import remove from './remove'
 import skip from './skip'
 import stop from './stop'
 
@@ -35,6 +37,7 @@ export const play = (guild, song) => {
 
 const execute = async (message, serverQueue) => {
   const args = message.content.split(' ')
+  let url = args[2]
 
   const voiceChannel = message.member.voice.channel
   if (!voiceChannel) {
@@ -55,8 +58,31 @@ const execute = async (message, serverQueue) => {
   }
 
   if (
-    !args[2].match(
+    !url.match(
       /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
+    )
+  ) {
+    const search = await yts(
+      args
+        .splice(-(args.length - 2), args.length - 2)
+        .toString()
+        .replace(/,/gi, ' '),
+    )
+
+    if (search.length <= 0) {
+      const messageEmbed = new Discord.MessageEmbed()
+        .setColor(getRandomColor())
+        .setDescription('**Link required to play music!**')
+
+      return message.channel.send(messageEmbed)
+    }
+
+    url = search.all.sort((a, b) => b.views - a.views)[0].url
+  }
+
+  if (
+    !url.match(
+      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/,
     )
   ) {
     const messageEmbed = new Discord.MessageEmbed()
@@ -66,7 +92,7 @@ const execute = async (message, serverQueue) => {
     return message.channel.send(messageEmbed)
   }
 
-  const songInfo = await ytdl.getInfo(args[2])
+  const songInfo = await ytdl.getInfo(url)
   const song = {
     title: songInfo.videoDetails.title,
     url: songInfo.videoDetails.video_url,
@@ -129,6 +155,9 @@ const music = async (client, message, args) => {
     return
   } else if (args[0] === 'queue' || args[0] === 'q') {
     listMusics(message, serverQueue)
+    return
+  } else if (args[0] === 'remove' || args[0] === 'r') {
+    remove(message, serverQueue)
     return
   } else {
     const messageEmbed = new Discord.MessageEmbed()
