@@ -1,11 +1,25 @@
-const stop = (message, serverQueue) => {
-  if (!message.member.voice.channel)
-    return message.channel.send(
-      '❌ **You have to be in a voice channel to stop the music!**',
-    )
+import Discord from 'discord.js'
 
-  if (!serverQueue)
-    return message.channel.send('There is no song that I could stop!')
+import getRandomColor from '../../utils/getRandomColors'
+
+const stop = (message, serverQueue) => {
+  if (!message.member.voice.channel) {
+    const messageEmbed = new Discord.MessageEmbed()
+      .setColor(getRandomColor())
+      .setDescription(
+        '❌ **You have to be in a voice channel to stop the music!**',
+      )
+
+    return message.channel.send(messageEmbed)
+  }
+
+  if (!serverQueue) {
+    const messageEmbed = new Discord.MessageEmbed()
+      .setColor(getRandomColor())
+      .setDescription('✅ **There is no song that I could stop!**')
+
+    return message.channel.send(messageEmbed)
+  }
 
   serverQueue.songs = []
   serverQueue.connection.dispatcher.end()

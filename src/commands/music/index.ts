@@ -77,7 +77,7 @@ const execute = async (message, serverQueue) => {
       return message.channel.send(messageEmbed)
     }
 
-    url = search.all.sort((a, b) => b.views - a.views)[0].url
+    url = search.all[0].url
   }
 
   if (
