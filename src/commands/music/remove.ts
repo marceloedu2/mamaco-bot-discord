@@ -2,7 +2,22 @@ import Discord from 'discord.js'
 
 const remove = (message, serverQueue) => {
   const args = message.content.split(' ')
+
   const itemIndex = args[2] ? Number(args[2]) : null
+
+  if (
+    String(args[2]).toLocaleLowerCase() === 'all' ||
+    String(args[2]).toLocaleLowerCase() === 'a'
+  ) {
+    serverQueue.songs = []
+    serverQueue.connection.dispatcher.end()
+
+    const messageEmbed = new Discord.MessageEmbed()
+      .setColor('#FF0000')
+      .setDescription(`✅ **All items removed**`)
+    return message.channel.send(messageEmbed)
+  }
+
   if (!message.member.voice.channel) {
     const messageEmbed = new Discord.MessageEmbed()
       .setColor('#FF0000')
@@ -41,7 +56,7 @@ const remove = (message, serverQueue) => {
   })
 
   if (serverQueue.songs.length <= 0) {
-    serverQueue.connection.dispatcher.end()
+    return serverQueue.connection.dispatcher.end()
   }
 
   const messageEmbed = new Discord.MessageEmbed()

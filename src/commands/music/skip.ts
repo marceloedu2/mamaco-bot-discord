@@ -16,12 +16,12 @@ const skip = (message, serverQueue) => {
   if (!serverQueue) {
     const messageEmbed = new Discord.MessageEmbed()
       .setColor(getRandomColor())
-      .setDescription('✅ **There is no song that I could skip!**')
+      .setDescription('❌ **There is no song that I could skip!**')
 
     return message.channel.send(messageEmbed)
   }
 
-  serverQueue.connection.dispatcher.end()
+  return serverQueue.connection.dispatcher.end()
 }
 
 export default skip

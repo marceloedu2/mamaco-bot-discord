@@ -22,7 +22,7 @@ const stop = (message, serverQueue) => {
   }
 
   serverQueue.songs = []
-  serverQueue.connection.dispatcher.end()
+  return serverQueue.connection.dispatcher.end()
 }
 
 export default stop
