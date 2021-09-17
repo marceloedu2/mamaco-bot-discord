@@ -2,7 +2,7 @@ import Discord from 'discord.js'
 
 import getRandomColor from '../../utils/getRandomColors'
 
-const listMusics = (message, serverQueue) => {
+const list = (message, serverQueue) => {
   if (serverQueue?.songs.length > 0) {
     const queueList =
       serverQueue.songs.length > 0
@@ -25,4 +25,4 @@ const listMusics = (message, serverQueue) => {
   }
 }
 
-export default listMusics
+export default list

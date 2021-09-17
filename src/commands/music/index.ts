@@ -1,7 +1,7 @@
 import Discord from 'discord.js'
 
 import execute from './execute'
-import listMusics from './listMusics'
+import list from './list'
 import remove from './remove'
 import skip from './skip'
 import stop from './stop'
@@ -27,7 +27,7 @@ const music = async (_, message, args) => {
   } else if (args[0] === 'stop' || args[0] === 's') {
     return stop(message, serverQueue)
   } else if (args[0] === 'queue' || args[0] === 'q') {
-    return listMusics(message, serverQueue)
+    return list(message, serverQueue)
   } else if (args[0] === 'remove' || args[0] === 'r') {
     return remove(message, serverQueue)
   } else {
