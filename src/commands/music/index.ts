@@ -20,15 +20,33 @@ const music = async (_, message, args) => {
       .setDescription(`❌ **specific command for music channel**`)
 
     return message.channel.send(messageEmbed)
-  } else if ((args[0] === 'play' || args[0] === 'p') && args[1]) {
+  } else if (
+    (args[0].toLowerCase() === 'play' ||
+      args[0].toLowerCase() === 'p' ||
+      args[0].toLowerCase() === 'playlist' ||
+      args[0].toLowerCase() === 'pl') &&
+    args[1]
+  ) {
     return execute(message, serverQueue, queue)
-  } else if (args[0] === 'next' || args[0] === 'n') {
+  } else if (
+    args[0].toLowerCase() === 'next' ||
+    args[0].toLowerCase().toLowerCase() === 'n'
+  ) {
     return skip(message, serverQueue)
-  } else if (args[0] === 'stop' || args[0] === 's') {
+  } else if (
+    args[0].toLowerCase() === 'stop' ||
+    args[0].toLowerCase() === 's'
+  ) {
     return stop(message, serverQueue)
-  } else if (args[0] === 'queue' || args[0] === 'q') {
+  } else if (
+    args[0].toLowerCase() === 'queue' ||
+    args[0].toLowerCase() === 'q'
+  ) {
     return list(message, serverQueue)
-  } else if (args[0] === 'remove' || args[0] === 'r') {
+  } else if (
+    args[0].toLowerCase() === 'remove' ||
+    args[0].toLowerCase() === 'r'
+  ) {
     return remove(message, serverQueue)
   } else {
     const messageEmbed = new Discord.MessageEmbed()

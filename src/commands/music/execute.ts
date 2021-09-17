@@ -2,6 +2,7 @@ import Discord from 'discord.js'
 import spotifyToYT from 'spotify-to-yt'
 import yts from 'yt-search'
 import ytdl from 'ytdl-core'
+import ytlist from 'ytpl'
 
 import getRandomColor from '../../utils/getRandomColors'
 import play from './play'
@@ -34,7 +35,8 @@ const execute = async (message, serverQueue, queue) => {
 
     return message.channel.send(messageEmbed)
   }
-  let song: songTypes = { title: '', url: '' }
+  let song: songTypes = {} as songTypes
+  let playList: songTypes[] = [] as songTypes[]
 
   if (
     !url.match(
@@ -70,19 +72,29 @@ const execute = async (message, serverQueue, queue) => {
 
       return message.channel.send(messageEmbed)
     }
-  } else if (
-    url.match(
-      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/,
-    )
-  ) {
+  } else if (url.match(/\.youtube\.com\//)) {
     try {
-      const songInfo = await ytdl.getInfo(url)
-
-      song = {
-        title: songInfo.videoDetails.title,
-        url: songInfo.videoDetails.video_url,
+      if (
+        args[1].toLowerCase() === 'pl' ||
+        args[1].toLowerCase() === 'playlist'
+      ) {
+        const playListData = await ytlist(url)
+        playList = playListData.items.map(({ title, url }) => {
+          return {
+            title,
+            url,
+          }
+        })
+      } else {
+        const songInfo = await ytdl.getInfo(url)
+        song = {
+          title: songInfo.videoDetails.title,
+          url: songInfo.videoDetails.video_url,
+        }
       }
     } catch (err) {
+      console.log(err)
+
       const messageEmbed = new Discord.MessageEmbed()
         .setColor(getRandomColor())
         .setDescription('❌ **Youtube - Invalid music link! **')
@@ -111,7 +123,17 @@ const execute = async (message, serverQueue, queue) => {
         }
       } else if (stylePlay === 'playlist') {
         try {
-          // const musicsUrl = await spotifyToYT.playListGet(url)
+          const musicsUrl = await spotifyToYT.playListGet(url)
+
+          playList = musicsUrl.songs.map(async url => {
+            const songInfo = await ytdl.getInfo(url)
+
+            return {
+              title: songInfo.videoDetails.title,
+              url: songInfo.videoDetails.video_url,
+            }
+          })
+
           const messageEmbed = new Discord.MessageEmbed()
             .setColor(getRandomColor())
             .setDescription(
@@ -162,8 +184,11 @@ const execute = async (message, serverQueue, queue) => {
     }
 
     queue.set(message.guild.id, queueConstruct)
-
-    queueConstruct.songs.push(song)
+    if (playList.length > 0) {
+      playList.forEach(song => queueConstruct.songs.push(song))
+    } else {
+      queueConstruct.songs.push(song)
+    }
 
     try {
       const connection: any = await voiceChannel.join()

@@ -7,7 +7,12 @@ const list = (message, serverQueue) => {
     const queueList =
       serverQueue.songs.length > 0
         ? serverQueue.songs.map((song, index) => {
-            return `**${index + 1}** - ${song.title}`
+            if (index < 50) {
+              return `**${index + 1}** - ${song.title}`
+            } else if (index === 50) {
+              return `More ** ${serverQueue.songs.length - 50}** items`
+            }
+            return ''
           })
         : []
 
