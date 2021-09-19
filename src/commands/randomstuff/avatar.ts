@@ -12,7 +12,7 @@ const avatar = async (client, message, args) => {
 
   const embed = new Discord.MessageEmbed()
     .setColor(getRandomColor())
-    .setTitle(`Avatar de ${user.username}`)
+    .setTitle(`${user.username} avatar`)
     .setImage(avatar)
     .setFooter(
       `• Autor: ${message.author.tag}`,
