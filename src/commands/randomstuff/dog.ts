@@ -11,7 +11,7 @@ const dog = async (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
       .setColor(getRandomColors())
-      .setDescription('Look i found a cute dog :cat:')
+      .setDescription('Look i found a cute dog :dog:')
       .setImage(data[0].url)
 
     return message.channel.send(embed)
