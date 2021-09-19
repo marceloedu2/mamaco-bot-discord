@@ -3,7 +3,7 @@ import Discord from 'discord.js'
 
 import getRandomColors from '../../utils/getRandomColors'
 
-const dog = async (client, message, args) => {
+const dog = async (_, message, args) => {
   try {
     const { data } = await axios.get(
       ' https://api.thedogapi.com/v1/images/search',
@@ -11,7 +11,7 @@ const dog = async (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
       .setColor(getRandomColors())
-      .setDescription('Look i found a cute dog :cat:')
+      .setDescription('Look i found a cute dog :dog:')
       .setImage(data[0].url)
 
     return message.channel.send(embed)
