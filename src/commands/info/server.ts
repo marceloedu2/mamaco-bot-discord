@@ -1,5 +1,7 @@
 import Discord from 'discord.js'
+
 import getRandomColors from '../../utils/getRandomColors'
+
 let days = 0
 let week = 0
 
@@ -9,17 +11,17 @@ const info = (client, message, args) => {
   let hours = Math.floor(totalSeconds / 3600)
   totalSeconds %= 3600
   let minutes = Math.floor(totalSeconds / 60)
-  let seconds = Math.floor(totalSeconds % 60)
+  const seconds = Math.floor(totalSeconds % 60)
 
-  let servers = client.guilds.cache.size
-  let users = client.users.cache.size
+  const servers = client.guilds.cache.size
+  const users = client.users.cache.size
 
   if (hours > 23) {
     days = days + 1
     hours = 0
   }
 
-  if (days == 7) {
+  if (days === 7) {
     days = 0
     week = week + 1
   }
@@ -34,7 +36,7 @@ const info = (client, message, args) => {
 
   uptime += `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`
 
-  let serverembed = new Discord.MessageEmbed()
+  const serverembed = new Discord.MessageEmbed()
     .setColor(getRandomColors())
     .setAuthor(`Mamaco-bot`, client.user.displayAvatarURL)
     .addField(`Version`, `1.0`, true)

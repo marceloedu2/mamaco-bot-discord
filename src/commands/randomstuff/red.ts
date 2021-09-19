@@ -1,6 +1,7 @@
 import Discord from 'discord.js'
-import getRandomColor from '../../utils/getRandomColors'
 import Pornsearch from 'pornsearch'
+
+import getRandomColor from '../../utils/getRandomColors'
 
 type pornRequestPros = {
   title: string
@@ -15,10 +16,17 @@ const red = async (client, message, args) => {
       tag = args.join(' ')
     }
 
-    if (message.channel.id !== '763017201053597738') {
+    if (
+      message.channel.name.match(/censored/) ||
+      message.channel.name.match(/adult/) ||
+      message.channel.name.match(/\+18/) ||
+      message.channel.name.match(/bot-test/)
+    ) {
       const msg = new Discord.MessageEmbed()
         .setColor(getRandomColor())
-        .setFooter(`Comando não destinado a esse canal!`)
+        .setFooter(
+          `Channel not allowed, look for channel with adult content released!`,
+        )
 
       return message.channel.send(msg)
     }

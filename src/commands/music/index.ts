@@ -10,6 +10,11 @@ const queue: any = new Map()
 
 const music = async (_, message, args) => {
   const serverQueue = queue.get(message.guild.id)
+  serverQueue?.songs.forEach((x, i) => {
+    if (i !== 0) {
+      queue.push(x)
+    }
+  })
 
   if (
     !message.channel.name.toLowerCase().match(/music/) &&
