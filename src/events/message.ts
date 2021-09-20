@@ -8,9 +8,12 @@ const config = {
 
 module.exports = async (client, message) => {
   if (message.author.bot) return
+
   if (message.channel.type === 'dm') return
+
   if (!message.content.toLowerCase().startsWith(config.prefix.toLowerCase()))
     return
+
   if (
     message.content.startsWith(`<@!${client.user.id}>`) ||
     message.content.startsWith(`<@${client.user.id}>`)
@@ -28,7 +31,7 @@ module.exports = async (client, message) => {
     const commandFile = require(commandPath)
     commandFile({ ...client }, message, args)
   } catch (err) {
-    console.error('Command erro:' + err)
+    console.error(err)
     const msgErr = new MessageEmbed()
       .setColor('#FF0000')
       .setDescription('❌ **404 - Command not found**')
