@@ -7,13 +7,13 @@ module.exports = (_, member) => {
     member.guild.roles.cache.find(i => i.name === 'Among The Server'),
   )
 
-  const sicon = member.user.displayAvatarURL()
-  const welcomeEmbed = new Discord.MessageEmbed()
+  const goodbyeEmbed = new Discord.MessageEmbed()
     .setColor(getRandomColor())
-    .setThumbnail(sicon)
     .addField(
-      'Aí vem um novo desafiante!',
-      `Um novo membro se juntou ao nosso servidor ${member}`,
+      `**${member.user.username}** was not the impostor there are **${member.guild.memberCount}** left Among Us`,
+    )
+    .setImage(
+      'https://gamewith-en.akamaized.net/article/thumbnail/rectangle/22183.png',
     )
 
   member.guild.channels.cache
@@ -22,5 +22,5 @@ module.exports = (_, member) => {
         channel.name.toLowerCase().match(/welcome/) ||
         channel.name.toLowerCase().match(/bot-test/),
     )
-    .send(welcomeEmbed)
+    .send(goodbyeEmbed)
 }
