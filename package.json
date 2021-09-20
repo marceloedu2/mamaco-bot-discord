@@ -37,7 +37,7 @@
     "ffmpeg-static": "^4.4.0",
     "fluent-ffmpeg": "^2.1.2",
     "giphy-random": "^2.0.8",
-    "heroku": "^7.47.3",
+    "heroku": "^7.59.0",
     "install": "^0.13.0",
     "pg": "^8.6.0",
     "pornsearch": "^2.4.3",

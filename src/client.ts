@@ -1,5 +1,6 @@
 import { Client } from 'discord.js'
 import * as fs from 'fs'
+import path from 'path'
 
 class DiscordBot {
   private static instance: DiscordBot
@@ -40,8 +41,10 @@ class DiscordBot {
   }
 
   private setMessageHandler(): void {
-    fs.readdir('./src/events/', (err, files) => {
+    fs.readdir(path.join(__dirname, 'events'), (err, files) => {
       if (err) return console.error(err)
+      console.log(files)
+
       files.forEach(async file => {
         const event = require(`./events/${file}`)
         const eventName = file.split('.')[0]
